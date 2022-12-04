@@ -5,17 +5,35 @@ import { useState } from 'react'
 import { SearchFilters } from '../../components/SearchFilters'
 
 export default function Slug(props: any) {
-  const products = JSON.parse(props.allProducts)
-  const [filter, setFilter] = useState('All bikes')
+  const [filter, setFilter] = useState(0)
+  const [products, setProducts] = useState(JSON.parse(props.data).allProducts)
+  const categories = JSON.parse(props.data).allCategories
+  categories.unshift({ name: 'All bikes', id: 0 })
 
-  const handleFilter = (filter: string) => {
+  const handleFilter = (filter: number) => {
     setFilter(filter)
+    requestProducts(filter)
+  }
+
+  const requestProducts = (filter: number) => {
+    // request products by filter
+    console.log(filter)
+    fetch(`/api/products?filter=${filter}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setProducts(data)
+      })
   }
 
   return (
     <>
       <div className="pt-20 mx-4">
-        <SearchFilters handleFilter={handleFilter} activeFilter={filter} />
+        <SearchFilters
+          handleFilter={handleFilter}
+          categories={categories}
+          activeFilter={filter}
+        />
 
         <section className="grid grid-cols-4 mt-12 uppercase gap-x-4 gap-y-12">
           {products.map((product: any) => (
@@ -42,7 +60,10 @@ export const getServerSideProps: GetServerSideProps = async () => {
         },
       },
     })
-    return allProducts
+
+    const allCategories = await prisma.category.findMany({})
+
+    return { allProducts, allCategories }
   }
 
   main()
@@ -55,13 +76,13 @@ export const getServerSideProps: GetServerSideProps = async () => {
       process.exit(1)
     })
 
-  let allProducts = null
-  allProducts = await main()
+  let data = null
+  data = await main()
 
-  allProducts = JSON.stringify(allProducts)
+  data = JSON.stringify(data)
 
   return {
     // pass allProducts as a prop
-    props: { allProducts }, // will be passed to the page component as props
+    props: { data }, // will be passed to the page component as props
   }
 }
