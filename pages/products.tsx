@@ -1,12 +1,13 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import Navigation from '../components/Navigation'
+import Link from 'next/link'
 
 export default function Products() {
   return (
     <>
       <Head>
-        <title>Bikes</title>
+        <title>Products</title>
         <meta
           name="description"
           content="Bike store from sweden to the world."
@@ -17,7 +18,10 @@ export default function Products() {
       <Navigation />
 
       <section className="grid h-screen grid-cols-3 gap-8 pt-24 mt-auto">
-        <div className="flex flex-col justify-between gap-12 pt-10 pb-14 bg-slate-200">
+        <Link
+          href="/products/bikes"
+          className="flex flex-col justify-between gap-12 pt-10 pb-14 bg-slate-200"
+        >
           <h2 className="text-4xl font-bold text-center uppercase">Bikes</h2>
           <div className="w-full h-96">
             <Image
@@ -31,8 +35,11 @@ export default function Products() {
           <button className="px-7 py-1.5 mx-auto font-bold uppercase border-2 border-black hover:bg-black hover:text-white duration-200 transition-colors rounded-full w-max">
             Go to shop
           </button>
-        </div>
-        <div className="flex flex-col justify-between gap-12 pt-10 pb-14 bg-slate-200">
+        </Link>
+        <Link
+          href="/products/bikes"
+          className="flex flex-col justify-between gap-12 pt-10 pb-14 bg-slate-200"
+        >
           <h2 className="text-4xl font-bold text-center uppercase">Bikes</h2>
           <div className="w-full h-96">
             <Image
@@ -46,8 +53,11 @@ export default function Products() {
           <button className="px-7 py-1.5 mx-auto font-bold uppercase border-2 border-black hover:bg-black hover:text-white duration-200 transition-colors rounded-full w-max">
             Go to shop
           </button>
-        </div>
-        <div className="flex flex-col justify-between gap-12 pt-10 pb-14 bg-slate-200">
+        </Link>
+        <Link
+          href="/products/bikes"
+          className="flex flex-col justify-between gap-12 pt-10 pb-14 bg-slate-200"
+        >
           <h2 className="text-4xl font-bold text-center uppercase">Bikes</h2>
           <div className="w-full h-96">
             <Image
@@ -61,7 +71,7 @@ export default function Products() {
           <button className="px-7 py-1.5 mx-auto font-bold uppercase border-2 border-black hover:bg-black hover:text-white duration-200 transition-colors rounded-full w-max">
             Go to shop
           </button>
-        </div>
+        </Link>
       </section>
     </>
   )
