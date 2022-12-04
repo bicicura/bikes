@@ -1,6 +1,6 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
-import { PrismaClient } from '@prisma/client'
+import prisma from '../../client'
 
 type Data = {
   filter: number
@@ -11,7 +11,6 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const prisma = new PrismaClient()
   const filter = parseInt(req.query.filter)
 
   const products = prisma.product
@@ -28,10 +27,10 @@ export default function handler(
       },
     })
     .then((products: any) => {
-      res.status(200).json(products)
+      return res.status(200).json(products)
     })
     .catch((err: any) => {
-      res.status(500).json({ error: err })
+      return res.status(500).json({ error: err })
     })
 
   prisma.$disconnect()

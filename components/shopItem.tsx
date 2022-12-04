@@ -1,8 +1,9 @@
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function ShopItem({ product }: any) {
   return (
-    <article className="aspect-square group">
+    <Link href="/products/bikes/detail" className="aspect-square group">
       <div className="w-full h-full bg-slate-200">
         <Image
           className="object-contain w-full h-full mx-auto"
@@ -21,6 +22,6 @@ export default function ShopItem({ product }: any) {
           Shop now
         </button>
       </div>
-    </article>
+    </Link>
   )
 }

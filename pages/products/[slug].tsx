@@ -1,8 +1,8 @@
 import { GetServerSideProps } from 'next'
 import ShopItem from '../../components/shopItem'
-import { PrismaClient } from '@prisma/client'
 import { useState } from 'react'
 import { SearchFilters } from '../../components/SearchFilters'
+import prisma from '../../client'
 
 export default function Slug(props: any) {
   const [filter, setFilter] = useState(0)
@@ -46,8 +46,6 @@ export default function Slug(props: any) {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const prisma = new PrismaClient()
-
   async function main() {
     // get all products with their brand names
     const allProducts = await prisma.product.findMany({
