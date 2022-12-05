@@ -17,13 +17,13 @@ export default function Navigation() {
           <Link href="/products">PRODUCTS</Link>
         </li>
         <li className={url === '/about' ? 'underline' : ''}>
-          <Link href="/about">About</Link>
+          <Link href="/about">ABOUT</Link>
         </li>
         <li className={url === '/merch' ? 'underline' : ''}>
-          <Link href="/merch">Merch</Link>
+          <Link href="/merch">MERCH</Link>
         </li>
         <li className={url === '/contact' ? 'underline' : ''}>
-          <Link href="/contac">Contact</Link>
+          <Link href="/contac">CONTACT</Link>
         </li>
       </ul>
     </nav>

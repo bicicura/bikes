@@ -1,6 +1,12 @@
+import { getBrandAndProducts } from '../../lib/brands'
 import Image from 'next/image'
 
-export default function Brand() {
+export default function Brand(props) {
+  const brand = JSON.parse(props.brand)
+  const products = brand.products
+
+  console.log(products)
+
   return (
     <>
       <section className="flex items-stretch w-full h-screen font-aeonik">
@@ -48,36 +54,36 @@ export default function Brand() {
         </div>
       </section>
       <section className="mt-20 font-aeonik">
-        <div className="flex items-center justify-between px-4">
+        <div className="flex items-center justify-between px-4 uppercase">
           <div>back</div>
           <h2 className="text-5xl">SCHINDELHAUER Models</h2>
           <div>next</div>
         </div>
         <div className="flex justify-center w-full text-center">
-          <div className="w-full max-w-md mx-auto uppercase">
-            <Image
-              className="object-cover w-full h-full mx-auto"
-              src="/bike-2.png"
-              alt="Bike"
-              width={800}
-              height={1920}
-            />
-            <h3>Arthur SSP</h3>
-            <button className="text-blue-700 uppercase">Shop now</button>
-          </div>
-          <div className="w-full max-w-md mx-auto uppercase">
-            <Image
-              className="object-cover w-full h-full mx-auto"
-              src="/bike-2.png"
-              alt="Bike"
-              width={800}
-              height={1920}
-            />
-            <h3>Arthur SSP</h3>
-            <button className="text-blue-700 uppercase">Shop now</button>
-          </div>
+          {products.map((product) => (
+            <div className="w-full max-w-md mx-auto uppercase" key={product.id}>
+              <Image
+                className="object-cover w-full h-full mx-auto"
+                src="/bike-2.png"
+                alt="Bike"
+                width={800}
+                height={1920}
+              />
+              <h3>{product.name}</h3>
+              <button className="text-blue-700 uppercase">Shop now</button>
+            </div>
+          ))}
         </div>
       </section>
     </>
   )
+}
+
+export async function getServerSideProps() {
+  let brand = await getBrandAndProducts(1)
+  brand = JSON.stringify(brand)
+
+  return {
+    props: { brand },
+  }
 }
