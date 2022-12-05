@@ -3,6 +3,7 @@ import { json } from 'stream/consumers'
 import { InferGetServerSidePropsType } from 'next'
 import { GetServerSideProps } from 'next'
 import { getBrands } from '../lib/brands'
+import Link from 'next/link'
 
 export default function Brands({
   brands,
@@ -14,7 +15,10 @@ export default function Brands({
           className="flex items-end even:flex-row-reverse"
           key={brand.id}
         >
-          <div className="flex items-end w-full h-full py-4">
+          <Link
+            href={`/brands/${brand.name.toLowerCase().split(' ').join('-')}`}
+            className="flex items-end w-full h-full py-4"
+          >
             <div
               className={`${
                 (i + 1) % 2 === 0 ? 'flex-row-reverse' : ''
@@ -44,7 +48,7 @@ export default function Brands({
                 </button>
               </div>
             </div>
-          </div>
+          </Link>
           <div className="w-full h-full bg-slate-200">
             <Image
               className="object-cover w-full h-full mx-auto"
