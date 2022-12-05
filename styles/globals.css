@@ -9,6 +9,10 @@
   font-style: normal;
 }
 
+:root {
+  font-size: clamp(0.3rem, 0.825vw + 0.2rem, 2rem);
+}
+
 .font-aeonik {
   font-family: 'Aeonik-Medium', sans-serif;
 }

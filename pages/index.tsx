@@ -58,7 +58,6 @@ export default function Home() {
             alt="Bike"
             width={800}
             height={1080}
-            objectFit="cover"
           />
         </aside>
       </section>
