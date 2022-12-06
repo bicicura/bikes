@@ -53,11 +53,38 @@ export default function Brand(props) {
           />
         </div>
       </section>
-      <section className="mt-20 font-aeonik">
+      <section className="my-20 font-aeonik">
         <div className="flex items-center justify-between px-4 uppercase">
-          <div>back</div>
+          <svg
+            className="w-20 rotate-90 hover:text-black"
+            viewBox="0 0 177.59 177.59"
+          >
+            <g
+              fill="none"
+              className="scroll-stroke"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeMiterlimit="10"
+            >
+              <circle cx="88.8" cy="88.8" r="87.3"></circle>
+              <path d="m143.84 71.71-56.4 56.34-56.4-56.34"></path>
+            </g>
+          </svg>
           <h2 className="text-5xl">SCHINDELHAUER Models</h2>
-          <div>next</div>
+          <div>
+            <svg className="w-20 -rotate-90" viewBox="0 0 177.59 177.59">
+              <g
+                fill="none"
+                className="scroll-stroke"
+                stroke="currentColor"
+                strokeWidth="3"
+                strokeMiterlimit="10"
+              >
+                <circle cx="88.8" cy="88.8" r="87.3"></circle>
+                <path d="m143.84 71.71-56.4 56.34-56.4-56.34"></path>
+              </g>
+            </svg>
+          </div>
         </div>
         <div className="flex justify-center w-full text-center">
           {products.map((product) => (

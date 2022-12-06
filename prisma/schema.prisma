@@ -12,22 +12,24 @@ datasource db {
 
 model Product {
   id        Int      @id @default(autoincrement())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
   name     String   @db.VarChar(255)
-  body   String?
-  published Boolean  @default(false)
+  slug   String?
+  description   String?
+  price     Int @default(0)
   brandId  Int
   brand     Brand    @relation(fields: [brandId], references: [id])
   image    String?
   categoryId Int
   category Category @relation(fields: [categoryId], references: [id])
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Brand {
   id     Int     @id @default(autoincrement())
   name    String?
-  body   String?
+  slug   String?
+  description   String?
   products Product[]
 }
 
