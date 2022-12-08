@@ -17,7 +17,6 @@ export default function Slug(props: any) {
 
   const requestProducts = (filter: number) => {
     // request products by filter
-    console.log(filter)
     fetch(`/api/products?filter=${filter}`)
       .then((res) => res.json())
       .then((data) => {

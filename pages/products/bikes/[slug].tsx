@@ -1,6 +1,10 @@
 import Image from 'next/image'
+import { GetServerSideProps } from 'next'
+import prisma from '../../../client'
 
-export default function Detail() {
+export default function Detail(props) {
+  const product = JSON.parse(props.product)
+
   const specs = [
     {
       id: 0,
@@ -52,7 +56,7 @@ export default function Detail() {
         <article className="flex flex-col justify-between w-full">
           <div className="flex items-center h-full">
             <section className="flex flex-col content-between w-5/12 max-w-md mx-auto text-justify">
-              <h1 className="text-7xl text-bold">ARTHUR SSP</h1>
+              <h1 className="uppercase text-7xl text-bold">{product.name}</h1>
               <p>
                 Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ipsa
                 cum ratione ad at explicabo eaque cupiditate voluptate, vel
@@ -68,7 +72,7 @@ export default function Detail() {
               </p>
               <div className="mt-4 space-y-2 divide-y divide-black">
                 <div className="flex justify-between">
-                  <p>Price: CHF 4,300.-</p>
+                  <p>Price: CHF {product.price}.-</p>
                   <button className="font-bold">SHOP NOW</button>
                 </div>
                 <div className="flex items-center justify-between pt-2">
@@ -123,4 +127,20 @@ export default function Detail() {
       </div>
     </>
   )
+}
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  let product = await prisma.product.findFirstOrThrow({
+    where: {
+      slug: context.query.slug,
+    },
+  })
+
+  product = JSON.stringify(product)
+
+  return {
+    props: {
+      product,
+    },
+  }
 }
