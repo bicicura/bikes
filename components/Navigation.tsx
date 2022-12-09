@@ -5,7 +5,7 @@ export default function Navigation() {
   const url = useRouter().pathname
 
   return (
-    <nav className="absolute w-full px-4 text-black">
+    <nav className="absolute z-50 w-full px-4 text-black">
       <ul className="flex justify-between">
         <li className={url === '/' ? 'underline' : ''}>
           <Link href="/">HOME</Link>
