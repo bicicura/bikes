@@ -5,8 +5,6 @@ export default function Brand(props) {
   const brand = JSON.parse(props.brand)
   const products = brand.products
 
-  console.log(products)
-
   return (
     <>
       <section className="flex items-stretch w-full h-screen font-aeonik">
@@ -90,8 +88,8 @@ export default function Brand(props) {
           {products.map((product) => (
             <div className="w-full max-w-md mx-auto uppercase" key={product.id}>
               <Image
-                className="object-cover w-full h-full mx-auto"
-                src="/bike-2.png"
+                className="object-contain w-full h-full mx-auto"
+                src={`/${product.image}`}
                 alt="Bike"
                 width={800}
                 height={1920}
@@ -106,9 +104,8 @@ export default function Brand(props) {
   )
 }
 
-export async function getServerSideProps() {
-  let brand = await getBrandAndProducts(1)
-  brand = JSON.stringify(brand)
+export async function getServerSideProps(context) {
+  const brand = JSON.stringify(await getBrandAndProducts(context.query.slug))
 
   return {
     props: { brand },

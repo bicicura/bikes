@@ -1,12 +1,12 @@
 import prisma from '../client'
 
-export function getBrands() {
-  return prisma.brand.findMany({})
+export async function getBrands() {
+  return await prisma.brand.findMany({})
 }
 
-export function getBrandAndProducts(id: number) {
-  return prisma.brand.findUnique({
-    where: { id },
+export async function getBrandAndProducts(slug: string) {
+  return await prisma.brand.findUnique({
+    where: { slug },
     include: { products: true },
   })
 }

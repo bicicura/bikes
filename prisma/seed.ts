@@ -8,9 +8,9 @@ async function main() {
   // await prisma.brand.deleteMany()
   // await prisma.category.deleteMany()
   // console.log('Deleted records in db')
-  await createBrands()
-  await createCategories()
-  // await createProducts()
+  // await createBrands()
+  // await createCategories()
+  await createProducts()
 }
 
 async function createCategories() {
@@ -78,7 +78,7 @@ async function createProducts() {
       slug: 'gustav',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'gustav.jpg',
       categoryId: 1,
       brandId: 1,
     },
@@ -87,7 +87,7 @@ async function createProducts() {
       slug: 'hannah',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'hannah.jpg',
       categoryId: 2,
       brandId: 1,
     },
@@ -96,7 +96,7 @@ async function createProducts() {
       slug: 'airisto-street',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'airisto-street.jpg',
       categoryId: 3,
       brandId: 2,
     },
@@ -105,7 +105,7 @@ async function createProducts() {
       slug: 'brooklyn',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'brooklyn.jpg',
       categoryId: 4,
       brandId: 2,
     },
@@ -114,7 +114,7 @@ async function createProducts() {
       slug: 'ingegnere',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'ingenere.jpg',
       categoryId: 5,
       brandId: 3,
     },
@@ -123,7 +123,7 @@ async function createProducts() {
       slug: 'viktor',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'viktor.jpg',
       categoryId: 6,
       brandId: 3,
     },
@@ -132,7 +132,7 @@ async function createProducts() {
       slug: 'ten-merano',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'ten-merano.jpg',
       categoryId: 7,
       brandId: 4,
     },
@@ -141,7 +141,7 @@ async function createProducts() {
       slug: 'kallio-comfort',
       description: 'Lorem ipsum dolor sit amet.',
       price: 1000,
-      image: 'https://via.placeholder.com/500x500',
+      image: 'kallio-comfort.jpg',
       categoryId: 8,
       brandId: 4,
     },

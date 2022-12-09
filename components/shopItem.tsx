@@ -10,7 +10,7 @@ export default function ShopItem({ product }: any) {
       <div className="w-full h-full bg-slate-200">
         <Image
           className="object-contain w-full h-full mx-auto"
-          src="/bike-2.png"
+          src={`/${product.image}`}
           alt="Bike"
           width={800}
           height={1080}
