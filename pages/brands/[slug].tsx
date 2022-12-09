@@ -1,5 +1,6 @@
 import { getBrandAndProducts } from '../../lib/brands'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Brand(props) {
   const brand = JSON.parse(props.brand)
@@ -100,7 +101,11 @@ export default function Brand(props) {
         </div>
         <div className="flex justify-center w-full text-center">
           {products.map((product) => (
-            <div className="w-full max-w-md mx-auto uppercase" key={product.id}>
+            <Link
+              href={`/products/bikes/${product.slug}`}
+              className="w-full max-w-md mx-auto uppercase"
+              key={product.id}
+            >
               <Image
                 className="object-contain w-full h-full mx-auto"
                 src={`/${product.image}`}
@@ -110,7 +115,7 @@ export default function Brand(props) {
               />
               <h3>{product.name}</h3>
               <button className="text-blue-700 uppercase">Shop now</button>
-            </div>
+            </Link>
           ))}
         </div>
       </section>

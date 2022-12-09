@@ -23,7 +23,7 @@ export default function Navigation() {
           <Link href="/merch">MERCH</Link>
         </li>
         <li className={url === '/contact' ? 'underline' : ''}>
-          <Link href="/contac">CONTACT</Link>
+          <Link href="/contact">CONTACT</Link>
         </li>
       </ul>
     </nav>
