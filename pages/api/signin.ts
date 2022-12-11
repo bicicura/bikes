@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken'
 import cookie from 'cookie'
 import prisma from '../../client'
 import { NextApiRequest, NextApiResponse } from 'next'
+import { NextResponse } from 'next/server'
 
 const Signin = async (req: NextApiRequest, res: NextApiResponse) => {
   const { email, password } = req.body
@@ -37,9 +38,13 @@ const Signin = async (req: NextApiRequest, res: NextApiResponse) => {
       })
     ) // this goes in .env
 
+    res.status(200)
     res.json('user')
   } else {
     res.status(401)
     res.json({ error: 'Email or Password is wrong' })
+    console.log('error')
   }
 }
+
+export default Signin
