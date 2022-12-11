@@ -3,6 +3,7 @@ import ShopItem from '../../components/shopItem'
 import { useState } from 'react'
 import { SearchFilters } from '../../components/SearchFilters'
 import prisma from '../../client'
+import fetcher from '../../lib/fetcher'
 
 export default function Slug(props: any) {
   const [filter, setFilter] = useState(0)
@@ -15,14 +16,18 @@ export default function Slug(props: any) {
     requestProducts(filter)
   }
 
-  const requestProducts = (filter: number) => {
+  const requestProducts = async (filter: number) => {
     // request products by filter
-    fetch(`/api/products?filter=${filter}`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data)
-        setProducts(data)
-      })
+    const fetchedProducts = await fetcher(`/products?filter=${filter}`)
+    console.log(fetchedProducts)
+    // setProducts(fetchedProducts)
+
+    // fetch(`/api/products?filter=${filter}`)
+    //   .then((res) => res.json())
+    //   .then((data) => {
+    //     console.log(data)
+    //     setProducts(data)
+    //   })
   }
 
   return (
