@@ -23,20 +23,24 @@ model Product {
   category    Category @relation(fields: [categoryId], references: [id])
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
+  Image       Image[]
 }
 
 model Brand {
   id          Int       @id @default(autoincrement())
   name        String?
-  slug        String    @unique 
+  slug        String    @unique
   description String?
+  thumbnail   String?
+  image       String?
   products    Product[]
 }
 
 model User {
   id    Int     @id @default(autoincrement())
   email String  @unique
-  name  String?
+  username  String  @unique
+  password  String
 }
 
 model Category {
@@ -44,4 +48,11 @@ model Category {
   name     String?
   slug     String?
   products Product[]
+}
+
+model Image {
+  id        Int     @id @default(autoincrement())
+  url       String?
+  productId Int
+  product   Product @relation(fields: [productId], references: [id])
 }

@@ -19,9 +19,9 @@ export default function Navigation() {
         <li className={url === '/about' ? 'underline' : ''}>
           <Link href="/about">ABOUT</Link>
         </li>
-        <li className={url === '/merch' ? 'underline' : ''}>
+        {/* <li className={url === '/merch' ? 'underline' : ''}>
           <Link href="/merch">MERCH</Link>
-        </li>
+        </li> */}
         <li className={url === '/contact' ? 'underline' : ''}>
           <Link href="/contact">CONTACT</Link>
         </li>

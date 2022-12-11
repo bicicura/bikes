@@ -52,7 +52,7 @@ export default function Brands({
           <div className="w-full h-full bg-slate-200">
             <Image
               className="object-cover w-full h-full mx-auto"
-              src="/bike-2.png"
+              src={`/bikes/${brand.thumbnail}`}
               alt="Bike"
               width={800}
               height={1920}

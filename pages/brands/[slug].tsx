@@ -15,10 +15,7 @@ export default function Brand(props) {
         <div className="sticky top-0 flex flex-col justify-between w-5/12 h-screen px-4 pb-4 pt-14">
           <h1 className="uppercase text-7xl">{brand.name}</h1>
           <div>
-            <p className="w-[29ch] ml-auto">
-              We build high-quality, low-maintenance bikes - belt driven since
-              day one.
-            </p>
+            <p className="w-[29ch] ml-auto text-right">{brand.description}</p>
           </div>
           <div className={`flex items-center justify-between w-full`}>
             <p>
@@ -49,7 +46,7 @@ export default function Brand(props) {
           <div className="sticky top-0 block h-screen">
             <Image
               className="object-contain w-full h-full mx-auto"
-              src="/bike-2.png"
+              src={`/bikes/${brand.thumbnail}`}
               alt="Bike"
               width={800}
               height={1920}
@@ -58,7 +55,7 @@ export default function Brand(props) {
           <div className="sticky top-0 block h-screen">
             <Image
               className="object-cover w-full h-full mx-auto"
-              src="/brooklyn.jpg"
+              src={`/bikes/${brand.image}`}
               alt="Bike"
               width={800}
               height={1920}
@@ -83,7 +80,7 @@ export default function Brand(props) {
               <path d="m143.84 71.71-56.4 56.34-56.4-56.34"></path>
             </g>
           </svg>
-          <h2 className="text-5xl">SCHINDELHAUER Models</h2>
+          <h2 className="text-5xl">{brand.name} Models</h2>
           <div>
             <svg className="w-20 -rotate-90" viewBox="0 0 177.59 177.59">
               <g
