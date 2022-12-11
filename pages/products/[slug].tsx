@@ -16,18 +16,14 @@ export default function Slug(props: any) {
     requestProducts(filter)
   }
 
-  const requestProducts = async (filter: number) => {
+  const requestProducts = (filter: number) => {
     // request products by filter
-    const fetchedProducts = await fetcher(`/products?filter=${filter}`)
-    console.log(fetchedProducts)
-    // setProducts(fetchedProducts)
-
-    // fetch(`/api/products?filter=${filter}`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     console.log(data)
-    //     setProducts(data)
-    //   })
+    fetch(`/api/products?filter=${filter}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data)
+        setProducts(data)
+      })
   }
 
   return (

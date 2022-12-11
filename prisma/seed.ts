@@ -10,7 +10,7 @@ async function main() {
   // console.log('Deleted records in db')
   // await createBrands()
   // await createCategories()
-  await createProducts()
+  // await createProducts()
 }
 
 async function createCategories() {
