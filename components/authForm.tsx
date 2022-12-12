@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router'
 import { auth } from '../lib/mutations'
 import React, { FC, useState } from 'react'
+import { userAgent } from 'next/server'
 
 const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
@@ -12,11 +14,16 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
     e.preventDefault()
     setIsLoading(true)
 
-    const user = await auth(mode, { email, password })
-
-    console.log(user)
+    const res = await auth(mode, { email, password })
+    const user = await res.json()
 
     setIsLoading(false)
+
+    if (user.hasOwnProperty('error')) {
+      setError(user.error)
+      return
+    }
+
     router.push('/dashboard')
   }
 
@@ -49,35 +56,41 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </label>
-            <button
-              type="submit"
-              disabled={isLoading ? true : false}
-              className="flex px-4 py-2 ml-auto tracking-wider text-white uppercase transition-colors duration-150 bg-gray-900 rounded-md hover:bg-gray-700 w-max disabled:opacity-75 disabled:pointer-events-none"
-            >
-              <svg
-                className={`w-5 h-5 mr-3 -ml-1 text-white animate-spin ${
-                  isLoading ? 'inline' : 'hidden'
-                }`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
+            <div className="flex items-center">
+              {error !== '' ? (
+                <span className="font-bold text-red-500">{error}</span>
+              ) : null}
+
+              <button
+                type="submit"
+                disabled={isLoading ? true : false}
+                className="flex px-4 py-2 ml-auto tracking-wider text-white uppercase transition-colors duration-150 bg-gray-900 rounded-md hover:bg-gray-700 w-max disabled:opacity-75 disabled:pointer-events-none"
               >
-                <circle
-                  className="opacity-25"
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="currentColor"
-                  strokeWidth="4"
-                ></circle>
-                <path
-                  className="opacity-75"
-                  fill="currentColor"
-                  d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                ></path>
-              </svg>
-              {mode}
-            </button>
+                <svg
+                  className={`w-5 h-5 mr-3 -ml-1 text-white animate-spin ${
+                    isLoading ? 'inline' : 'hidden'
+                  }`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                >
+                  <circle
+                    className="opacity-25"
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="currentColor"
+                    strokeWidth="4"
+                  ></circle>
+                  <path
+                    className="opacity-75"
+                    fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+                  ></path>
+                </svg>
+                {mode}
+              </button>
+            </div>
           </form>
         </div>
       </div>
