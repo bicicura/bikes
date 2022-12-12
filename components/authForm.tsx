@@ -13,6 +13,9 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
     setIsLoading(true)
 
     const user = await auth(mode, { email, password })
+
+    console.log(user)
+
     setIsLoading(false)
     router.push('/dashboard')
   }

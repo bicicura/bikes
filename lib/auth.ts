@@ -3,11 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { type } from 'os'
 import prisma from '../client'
 
-// type id = number | string
-type id = {
-  id: id
-}
-
 export const validateRoute = (handler: any) => {
   return async (req: NextApiRequest, res: NextApiResponse) => {
     const { BIKES_ACCESS_TOKEN: token } = req.cookies

@@ -42,8 +42,7 @@ const Signin = async (req: NextApiRequest, res: NextApiResponse) => {
     res.json('user')
   } else {
     res.status(401)
-    res.json({ error: 'Email or Password is wrong' })
-    console.log('error')
+    res.json({ error: 'Please try again, credentials are wrong.' })
   }
 }
 
