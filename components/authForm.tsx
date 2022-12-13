@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { auth } from '../lib/mutations'
-import React, { FC, useState } from 'react'
-import { userAgent } from 'next/server'
+import React, { FC, useEffect, useState } from 'react'
+import { NextRequest } from 'next/server'
 
 const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
   const [email, setEmail] = useState('')
@@ -9,6 +9,8 @@ const AuthForm: FC<{ mode: 'signin' | 'signup' }> = ({ mode }) => {
   const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
+
+  useEffect(() => {}, [])
 
   const handleSubmit = async (e: React.SyntheticEvent) => {
     e.preventDefault()
