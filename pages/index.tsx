@@ -49,7 +49,7 @@ export default function Home() {
         </main>
         <aside className="relative flex flex-col w-6/12">
           <div className="mt-auto ml-12 text-white drop-shadow-lg mb-14">
-            <p>Bikes / 3 de Febrero 4650, Argentina</p>
+            <p>Bikes / 3 de Febrero 4650, Buenos Aires Argentina</p>
             <p>www.bikes.com / +54 9 11 5812-5194</p>
           </div>
           <Image
